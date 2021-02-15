@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
 
             let finalVatPrice = vatPrice(Number(netPrice.value), Number(vatRate.value));
 
-            output = `Cena produktu ${productName.value}, wynosi: <span name="final_amound">${finalAmound}</span> zł brutto, kwota podatku to <span id="final_vamound" name="final_vat"> ${finalVatPrice}</span> zł.`;
+            output = `Cena produktu <span> ${productName.value}</span>, wynosi: <span name="final_amound">${finalAmound}</span> zł brutto, kwota podatku to <span id="final_vamound" name="final_vat"> ${finalVatPrice}</span> zł.`;
             const divOutput = document.getElementById('output');
 
 
