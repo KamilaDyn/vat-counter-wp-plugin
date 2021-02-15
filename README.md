@@ -1,3 +1,11 @@
+## shortcode 
+
+shortcode [vat_counter]
+
+## Problem to solve
+
+Doesn't remove DB, problem with unisntall
+
 ## Project Title
 
 Plugin for Wordpress
