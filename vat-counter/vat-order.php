@@ -2,16 +2,16 @@
 
 /*
 * file to register CPT
-* @packgage vat-counter
+* @package vat-counter
 */
 
 function vat_calculations_order_page()
 {
     $labels = array(
-        'name' => __('Vats Obliczenia', 'vat-counter'),
+        'name' => __('Vats Obliczenie', 'vat-counter'),
         'singular_name' => __('Vat obliczenie', 'vat-counter'),
         'menu_name' => __('Obliczenie Vat', 'vat-counter'),
-        'name_admin_bar' => __('Obliczenia', 'vat-counter'),
+        'name_admin_bar' => __('Obliczenie', 'vat-counter'),
         'add_new' => __('Dodaj', 'vat-counter'),
         'add_new_item' => __('Add New Vat', 'vat-counter'),
         'new_item' => __('Nowy Vat', 'vat-counter'),
@@ -205,15 +205,12 @@ function my_vat_calculations_meta_boxes()
     if ($parent_id = wp_is_post_revision($post_id)) {
         $post_id = $parent_id;
     }
-
-
     $field_lists = [
         'brutto_price',
         'netto_price',
         'vat',
         'vat_proc',
         'ip',
-
     ];
     // doesn't update
     foreach ($field_lists as $field) {

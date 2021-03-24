@@ -1,9 +1,8 @@
 <?php
 /*
-* file to unistall plugin
-* @packgage vat-counter
+* file to uninstall plugin
+* @package vat-counter
 */
-
 
 class VatPluginDeactivate
 {

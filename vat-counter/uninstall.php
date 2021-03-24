@@ -1,7 +1,7 @@
 <?php
 /*
-* file to unistall plugin
-* @packgage vat-counter
+* file to uninstall plugin
+* @package vat-counter
 */
 
 if (!defined('WP_UNINSTALL_PLUGIN')) {

@@ -1,9 +1,8 @@
 <?php
 /*
 * file for calculation
-* @packgage vat-counter
+* @package vat-counter
 */
-
 
 function vat_counter_button_handler()
 {
@@ -26,14 +25,10 @@ function vat_counter_button_handler()
     </select></div>';
     $content .= '<div><input type="submit" id="submit_btn" name="submit" value="oblicz"/></div>';
     $content .= '<input type="hidden" name="post_type" id="post_type" value="my_custom_post_type"/>';
-
-
     // secure that action is from current side
     wp_nonce_field('vat_calculations_nonce_action', 'vat_calculations_nonce_field');
-
     $content .= '</form>';
     $content .= '<p id="output"></p>';
     $content .= '</div>';
-
     return $content;
 }

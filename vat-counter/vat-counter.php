@@ -10,13 +10,11 @@
  * Text Domain:       vat-counter
  * 
  */
-
 // Exit if accessed directly
 
 if (!defined('ABSPATH')) {
     exit;
 }
-
 // define variable for path to this plugin file
 if (!class_exists('VatCounter')) {
     class VatCounter
@@ -42,7 +40,7 @@ if (!class_exists('VatCounter')) {
             add_filter('manage_vat_calculations_posts_columns', 'vat_calculations_column');
             add_action('manage_vat_calculations_posts_custom_column', 'my_manage_vat_calculation_columns', 10, 2);
             add_action('wp_ajax_set_form', array($this, 'set_form'));    //execute when wp logged in
-            add_action('wp_ajax_nopriv_set_form', array($this, 'set_form')); //execute when logged out
+            add_action('wp_ajax_no_priv_set_form', array($this, 'set_form')); //execute when logged out
             add_shortcode('vat_counter', 'vat_counter_button_handler');
         }
 
@@ -62,10 +60,10 @@ if (!class_exists('VatCounter')) {
         {
             // enqueue all our scripts
 
-            wp_enqueue_style('mypluginstyle', plugins_url('/assets/mystyle.css', __FILE__));
+            wp_enqueue_style('my-plugin-style', plugins_url('/assets/my-style.css', __FILE__));
             wp_enqueue_script('jquery', plugins_url('/js/jquery.min.js', __FILE__));
-            wp_enqueue_script('mypluginscript', plugins_url('/js/myscript.js', __FILE__));
-            wp_localize_script('mypluginscript', 'cpm_object', admin_url('admin-ajax.php'));
+            wp_enqueue_script('my-plugin-script', plugins_url('/js/my-script.js', __FILE__));
+            wp_localize_script('my-plugin-script', 'cpm_object', admin_url('admin-ajax.php'));
         }
 
         function activate()
@@ -78,13 +76,9 @@ if (!class_exists('VatCounter')) {
 
         function set_form()
         {
-
             if (
-
-
                 // https://developer.wordpress.org/themes/theme-security/using-nonces/
                 !isset($_POST['vat_calculations_nonce_field'])
-
                 && !wp_verify_nonce($_POST['vat_calculations_nonce_field'], 'vat_calculations_nonce_action')
             ) {
                 function get_user_Ip_addr()
@@ -101,22 +95,18 @@ if (!class_exists('VatCounter')) {
                     return $ip;
                 }
 
-
                 $vat = isset($_POST['final_vat']) ? $_POST['final_vat'] : 'N/A';
                 $title = isset($_POST['prod_title']) ? $_POST['prod_title'] : 'N/A';
-                $final_amound = isset($_POST['final_amound']) ? $_POST['final_amound'] : 'N/A';
+                $final_amount = isset($_POST['final_amount']) ? $_POST['final_amound'] : 'N/A';
                 $netto_price = $_POST['numm'];
                 $vat_rate =  isset($_POST['vat_rate']) ? $_POST['vat_rate'] : 'N/A';
                 $netto_price = isset($_POST['net_price']) ? $_POST['net_price'] : 'N/A';
-
-
-
                 $new_post = array(
                     'post_title' =>  $title,
                     'post_status'   => 'private',
                     'post_type' => 'vat_calculations',
                     'meta_input' => array(
-                        'brutto_price' => $final_amound,
+                        'brutto_price' => $final_amount,
                         'netto_price' => $netto_price,
                         'vat' => $vat,
                         'vat_proc' => $vat_rate,
@@ -125,8 +115,6 @@ if (!class_exists('VatCounter')) {
                 );
                 wp_insert_post($new_post, true);
             }
-
-
             die();
         }
     }
@@ -134,7 +122,6 @@ if (!class_exists('VatCounter')) {
 
     // activation
     register_activation_hook(__FILE__, array($vat_counter, 'activate'));
-
     // deactivation
     require_once plugin_dir_path(__FILE__) . 'inc/vat-counter-deactivate.php';
     register_deactivation_hook(__FILE__, array('VatPluginDeactivate', 'deactivate'));
