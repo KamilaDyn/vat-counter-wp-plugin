@@ -87,7 +87,7 @@ if (!class_exists('VatCounter')) {
 
                 && !wp_verify_nonce($_POST['vat_calculations_nonce_field'], 'vat_calculations_nonce_action')
             ) {
-                function getUserIpAddr()
+                function get_user_Ip_addr()
                 {
                     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
                         //ip from share internet
@@ -104,7 +104,7 @@ if (!class_exists('VatCounter')) {
 
                 $vat = isset($_POST['final_vat']) ? $_POST['final_vat'] : 'N/A';
                 $title = isset($_POST['prod_title']) ? $_POST['prod_title'] : 'N/A';
-                $finalAmound = isset($_POST['final_amound']) ? $_POST['final_amound'] : 'N/A';
+                $final_amound = isset($_POST['final_amound']) ? $_POST['final_amound'] : 'N/A';
                 $netto_price = $_POST['numm'];
                 $vat_rate =  isset($_POST['vat_rate']) ? $_POST['vat_rate'] : 'N/A';
                 $netto_price = isset($_POST['net_price']) ? $_POST['net_price'] : 'N/A';
@@ -116,11 +116,11 @@ if (!class_exists('VatCounter')) {
                     'post_status'   => 'private',
                     'post_type' => 'vat_calculations',
                     'meta_input' => array(
-                        'brutto_price' => $finalAmound,
+                        'brutto_price' => $final_amound,
                         'netto_price' => $netto_price,
                         'vat' => $vat,
                         'vat_proc' => $vat_rate,
-                        'ip' => getUserIpAddr(),
+                        'ip' => get_user_Ip_addr(),
                     )
                 );
                 wp_insert_post($new_post, true);
@@ -130,10 +130,10 @@ if (!class_exists('VatCounter')) {
             die();
         }
     }
-    $vatCounter = new VatCounter();
+    $vat_counter = new VatCounter();
 
     // activation
-    register_activation_hook(__FILE__, array($vatCounter, 'activate'));
+    register_activation_hook(__FILE__, array($vat_counter, 'activate'));
 
     // deactivation
     require_once plugin_dir_path(__FILE__) . 'inc/vat-counter-deactivate.php';
