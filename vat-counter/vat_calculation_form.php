@@ -9,8 +9,8 @@ function vat_counter_button_handler()
     $content = '';
     $content .= ' <div id="calc" class="calc">';
     $content .= '<form action="" method="POST" id="form">';
-    $content .= '<div><label for="prod_title">Nazwa produktu</label><input type="text" id="prod_title" name="prod_title" required></div>';
-    $content .= '<div><label for="net_price">Kwota netto</label><div class="input-number-container"><span class="input-number-decrement">–</span><input type="text" id="net_price"  class="input-number"  min="0.01" step="0.01" max="" name="net_price" required><span class="input-number-increment">+</span><input type="text" id="currency" value="PLN" name="currency"  disabled></div></div>';
+    $content .= '<div><label for="prod_title">Nazwa produktu</label><input type="text" id="prod_title" name="prod_title" value="" required></div>';
+    $content .= '<div><label for="net_price">Kwota netto</label><div class="input-number-container"><span class="input-number-decrement isDisabled">–</span><input type="text" id="net_price"  class="input-number"  min="0.01" step="0.01" max="" name="net_price"  required><span class="input-number-increment">+</span><input type="text" id="currency" value="PLN" name="currency"  disabled></div></div>';
     $content .= '<div class="select-vat-container"><label for="vat_rate">VAT</label><select name="vat_rate" id="vat_rate">
         <option value="23">23%</option>
         <option value="22">22%</option>

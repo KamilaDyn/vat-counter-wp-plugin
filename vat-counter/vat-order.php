@@ -24,7 +24,6 @@ function vat_calculations_order_page()
         'not_found_in_trash' => __('Nie znaleziono w koszu.', 'vat-counter')
     );
 
-
     // access to administrator screen options
     $capability = 'manage_options';
     $capabilities = array(
@@ -82,14 +81,10 @@ function vat_calculations_column($columns)
         'ip' => __('Numer IP', 'vat-counter'),
         'date' => __('Data', 'vat-counter'),
     );
-
     return array_merge($columns, $edit_columns);
 }
 
-
-
 // meta boxes
-
 function vat_calculations_order_meta_box($post)
 {
     $brutto = esc_attr(get_post_meta(get_the_ID(), 'brutto_price', true));
@@ -99,7 +94,6 @@ function vat_calculations_order_meta_box($post)
     $vat_proc  =  get_post_meta($post->ID, 'vat_proc', true);
     // Add an nonce field 
     wp_nonce_field('vat_counter_meta_box', 'vat_counter_meta_box_nonce');
-
 ?>
     <table class="form-table">
         <tbody>
@@ -135,9 +129,7 @@ function vat_calculations_order_meta_box($post)
                 </td>
             </tr>
         </tbody>
-
     </table>
-
 <?php
 }
 
@@ -169,9 +161,6 @@ function my_manage_vat_calculation_columns($column, $post_id)
             break;
     }
 }
-
-
-
 
 function my_vat_calculations_meta_boxes()
 {
