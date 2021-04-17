@@ -14,7 +14,7 @@ Vat counter. Count brutto price and Vat. Just in polish version.
 ## Technologies used
 
 1. PHP
-2. JqUERY (Ajax)
+2. JS
 3. Wordpress CPT
 
 
